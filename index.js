@@ -9,7 +9,7 @@ var path = require('path'),
 module.exports = function(app, rootPath) {
     var middlewareAddons = {},
         container = dependable.container(),
-        appRoot = path.resolve(path.join(__dirname, rootPath || '../../../..'));
+        appRoot = path.resolve(path.join(__dirname, rootPath || '../..'));
 
     container.register('app', function() {
         return app;

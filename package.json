@@ -1,6 +1,6 @@
 {
   "name": "byword",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An MVC, dependency injection and chaining middleware framework for express.",
   "main": "index.js",
   "scripts": {
