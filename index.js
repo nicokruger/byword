@@ -43,6 +43,28 @@ module.exports = function(app, rootPath) {
             viewsInitializer(viewsRoot, app, config && config.viewEngine);
             controllersInitializer(controllersRoot, app, middlewareAddons, container);
         },
+        plugin: function(plugin) {
+            var self = this;
+
+            if (_.isUndefined(plugin))
+                return this;
+
+            if (!_.isUndefined(plugin.dependencies)) {
+                _(plugin.dependencies).each(function(dependency, key) {
+                    self.register(key, dependency);
+                });
+            }
+
+            if (!_.isUndefined(plugin.middleware)) {
+                _(plugin.middleware).each(function (middleware, key) {
+                    self.use(key, function () {
+                        return middleware;
+                    });
+                });
+            }
+
+            return this;
+        },
         use: function(name, middleware) {
             middlewareAddons[name] = middleware;
 
