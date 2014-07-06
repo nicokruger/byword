@@ -18,8 +18,10 @@ describe('a server with a mongo plugin', function() {
             var json = JSON.parse(body);
 
             expect(res.statusCode).to.be(200);
-            expect(json.length).to.be(2);
+            expect(json.length).to.be(4);
             expect(json[1]).to.be('user2');
+            expect(json[2]).to.be('Arb1');
+            expect(json[3]).to.be('Arb2');
 
             done();
         });
