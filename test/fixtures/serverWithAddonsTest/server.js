@@ -4,13 +4,13 @@ module.exports = function(root, done) {
     var app = express(),
         byword = require('../../../index')(app, root);
 
-    byword.use('additionMiddleware', require('./additionMiddleware'))
-        .useDir('./middleware')
-        .register('multiplyService', require('./multiplyService'))
-        .register('multiplyValue', 10)
-        .registerDir('./services')
-        .resolve(require('./myOwnController'))
-        .resolveDir('./scheduled')
+    byword.mid('additionMiddleware', require('./additionMiddleware'))
+        .midDir('./middleware')
+        .dep('multiplyService', require('./multiplyService'))
+        .dep('multiplyValue', 10)
+        .depDir('./services')
+        .res(require('./myOwnController'))
+        .resDir('./scheduled')
         .init();
 
     return app.listen(3000, '127.0.0.1', done);

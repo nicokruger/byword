@@ -101,12 +101,12 @@ module.exports = function(app, rootPath) {
 
             return this;
         },
-        use: function(name, middleware) {
+        mid: function(name, middleware) {
             middlewareAddons[name] = middleware;
 
             return this;
         },
-        useDir: function(middlewarePath) {
+        midDir: function(middlewarePath) {
             dependenciesDir.push(middlewarePath);
             fsWalk.filesSync(path.resolve(appRoot + '/' + middlewarePath), function (basedir, filename) {
                 middlewareAddons[path.basename(filename, '.js')] = require(path.join(basedir, filename));
@@ -114,17 +114,17 @@ module.exports = function(app, rootPath) {
 
             return this;
         },
-        register: function() {
+        dep: function() {
             container.register.apply(null, arguments);
 
             return this;
         },
-        registerDir: function(relativeDir) {
+        depDir: function(relativeDir) {
             container.load.call(null, path.join(appRoot, relativeDir));
 
             return this;
         },
-        resolve: function(value) {
+        res: function(value) {
             dependencies.push(value);
 
             return this;
@@ -134,7 +134,7 @@ module.exports = function(app, rootPath) {
          * @param relativeDir should be a path relative to the root of a project.
          * @returns this for chaining syntactic sugar.
          */
-        resolveDir: function(relativeDir) {
+        resDir: function(relativeDir) {
             dependenciesDir.push(relativeDir);
 
             return this;
