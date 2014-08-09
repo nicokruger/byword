@@ -1,6 +1,6 @@
 {
   "name": "byword",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "A web framework for node that support dependency injection and adding middleware.",
   "main": "index.js",
   "scripts": {

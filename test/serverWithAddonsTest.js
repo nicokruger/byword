@@ -91,4 +91,15 @@ describe('a server with addons', function() {
             done();
         });
     });
+
+    it('should be able to respond with a custom middleware', function (done) {
+        request.get('http://localhost:3000/arbMiddleware', function (err, res, body) {
+            var json = JSON.parse(body);
+
+            expect(res.statusCode).to.be(200);
+            expect(json).to.be('arb string');
+
+            done();
+        });
+    });
 });

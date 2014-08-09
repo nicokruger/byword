@@ -8,4 +8,6 @@ module.exports = function(multiplyService, app) {
         res.json(multiplyService(5, 5));
     });
     this.get('/expression').addSmile('smile').addWink('wink').json();
+
+    this.get('/arbMiddleware').respondWithArbJSON('arb');
 };
